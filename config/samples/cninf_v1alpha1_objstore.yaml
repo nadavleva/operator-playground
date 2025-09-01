@@ -1,0 +1,11 @@
+apiVersion: cninf.nadavleva.github.io/v1alpha1
+kind: ObjStore
+metadata:
+  labels:
+    app.kubernetes.io/name: cninf
+    app.kubernetes.io/managed-by: kustomize
+  name: objstore-sample-a1
+spec:
+  # TODO(user): Add fields here
+  name: fpmlil-ektk8s-a2
+  locked: true
