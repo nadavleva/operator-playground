@@ -123,7 +123,7 @@ This project includes several convenient development scripts:
 ### 🔄 Full Development Cycle
 
 ```bash
-./dev-restart.sh
+./scripts/dev-restart.sh
 ```
 - Stops any running controller processes
 - Clears port conflicts (8081)
@@ -135,7 +135,7 @@ This project includes several convenient development scripts:
 ### 🛑 Stop Controller
 
 ```bash
-./stop-controller.sh
+./scripts/stop-controller.sh
 ```
 - Cleanly stops the running controller using saved PID
 - Fallback process cleanup by name
@@ -143,7 +143,7 @@ This project includes several convenient development scripts:
 ### 🔨 Build Only
 
 ```bash
-./rebuild.sh
+./scripts/rebuild.sh
 ```
 - Rebuilds the controller binary only
 - Does not start the controller
@@ -151,7 +151,7 @@ This project includes several convenient development scripts:
 ### 📋 View Logs
 
 ```bash
-./logs.sh
+./scripts/logs.sh
 ```
 - Shows real-time controller logs
 - Use Ctrl+C to exit log viewing
@@ -159,7 +159,7 @@ This project includes several convenient development scripts:
 ### 🔄 Switch Contexts Safely
 
 ```bash
-./switch-context.sh <context-name>
+./scripts/switch-context.sh <context-name>
 ```
 - Safely switches between Kubernetes contexts with validation
 - Checks if clusters are running before switching
@@ -167,10 +167,10 @@ This project includes several convenient development scripts:
 
 Examples:
 ```bash
-./switch-context.sh kind-kind        # Switch to kind cluster
-./switch-context.sh crc-admin        # Switch to CRC admin (checks if CRC is running)
-./switch-context.sh list             # Show all contexts
-./switch-context.sh current          # Show current context and test connection
+./scripts/switch-context.sh kind-kind        # Switch to kind cluster
+./scripts/switch-context.sh crc-admin        # Switch to CRC admin (checks if CRC is running)
+./scripts/switch-context.sh list             # Show all contexts
+./scripts/switch-context.sh current          # Show current context and test connection
 ```
 
 ### Manual Operations
@@ -205,7 +205,7 @@ kubectl get crds | grep objstore
 
 ```bash
 # Development mode (runs locally, connects to cluster)
-./dev-restart.sh
+./scripts/dev-restart.sh
 ```
 
 ### 3. Create ObjStore Resources
@@ -346,8 +346,8 @@ kill $(cat .manager.pid)
 
 ### Development Tips
 
-1. **Always use `./dev-restart.sh`** for the fastest development cycle
-2. **Check logs with `./logs.sh`** when debugging issues  
+1. **Always use `./scripts/dev-restart.sh`** for the fastest development cycle
+2. **Check logs with `./scripts/logs.sh`** when debugging issues  
 3. **Use `kubectl get objstore -w`** to watch resource changes in real-time
 4. **Clean up resources** with `kubectl delete objstore --all` between tests
 5. **Verify CRDs** are up-to-date after API changes with `make manifests`
@@ -368,11 +368,13 @@ kill $(cat .manager.pid)
 ├── bin/                   # Built binaries
 ├── controller.log         # Controller logs (when running)
 ├── .manager.pid          # Saved process ID
-├── dev-restart.sh        # Full development cycle
-├── stop-controller.sh    # Stop controller  
-├── rebuild.sh           # Build only
-├── logs.sh              # View logs
-├── switch-context.sh    # Safe context switching
+├── scripts/              # Development scripts
+│   ├── dev-restart.sh    # Full development cycle
+│   ├── stop-controller.sh # Stop controller
+│   ├── rebuild.sh        # Build only
+│   ├── logs.sh           # View logs
+│   ├── switch-context.sh # Safe context switching
+│   └── scripts.sh        # Main project scripts history
 └── README.md           # This file
 ```
 

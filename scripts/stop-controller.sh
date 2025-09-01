@@ -5,18 +5,18 @@
 echo "🛑 Stopping controller..."
 
 # Method 1: Stop using saved PID file
-if [ -f .manager.pid ]; then
-    PID=$(cat .manager.pid)
+if [ -f ../.manager.pid ]; then
+    PID=$(cat ../.manager.pid)
     if kill -0 "$PID" 2>/dev/null; then
         kill "$PID"
         echo "Controller with PID $PID stopped"
-        rm .manager.pid
+        rm ../.manager.pid
     else
         echo "PID $PID not running, removing stale PID file"
-        rm .manager.pid
+        rm ../.manager.pid
     fi
 else
-    echo "No .manager.pid file found"
+    echo "No ../.manager.pid file found"
 fi
 
 # Method 2: Stop any manager processes by name

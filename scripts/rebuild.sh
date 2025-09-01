@@ -5,10 +5,10 @@
 set -e  # Exit on any error
 
 echo "🔨 Rebuilding controller..."
-make build
+cd .. && make build && cd scripts
 
 echo "✅ Controller rebuilt successfully!"
-echo "Binary is ready at: ./bin/manager"
+echo "Binary is ready at: ../bin/manager"
 echo ""
-echo "To run: ./bin/manager"
+echo "To run: ../bin/manager"
 echo "Or use: ./dev-restart.sh to stop, rebuild, and restart"
